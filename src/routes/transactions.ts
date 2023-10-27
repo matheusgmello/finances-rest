@@ -11,15 +11,17 @@ export async function transactionsRoutes(app: FastifyInstance) {
   })
 
   app.get('/:id', async (request) => {
-    const getTransactionParamsSchema = z.object({
+    const getTransactionsParamsSchema = z.object({
       id: z.string().uuid(),
     })
 
-    const { id } = getTransactionParamsSchema.parse(request.params)
+    const { id } = getTransactionsParamsSchema.parse(request.params)
 
     const transaction = await knex('transactions').where('id', id).first()
 
-    return { transaction }
+    return {
+      transaction,
+    }
   })
 
   app.get('/summary', async () => {
@@ -41,10 +43,22 @@ export async function transactionsRoutes(app: FastifyInstance) {
       request.body,
     )
 
+    let sessionId = request.cookies.sessionId
+
+    if (!sessionId) {
+      sessionId = randomUUID()
+
+      reply.setCookie('sessionId', sessionId, {
+        path: '/',
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+      })
+    }
+
     await knex('transactions').insert({
       id: randomUUID(),
       title,
       amount: type === 'credit' ? amount : amount * -1,
+      session_id: sessionId,
     })
 
     return reply.status(201).send()
