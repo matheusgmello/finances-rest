@@ -3,7 +3,7 @@
 Desenvolvida nas aulas do Bootcamp Ignite da [Rocketseat](https://rocketseat.com.br),
 esta REST API se trata sobre um sistema de transações financeiras.
 
-<h2>TECNOLOGIAS<h2/>
+## TECNOLOGIAS
 
 - [Nodejs](https://nodejs.org/en)
 - [Typescript](https://www.typescriptlang.org/docs/)
@@ -15,14 +15,14 @@ esta REST API se trata sobre um sistema de transações financeiras.
 
 
 
-<h2>RF<h2/>
+## RF
 
 - [x] O usuário deve poder criar uma nova transação
 - [x] O usuário deve poder obter um resumo de sua conta
 - [x] O usuário deve poder listar todas transações que já ocorreram
 - [x] O usuário deve poder visualizar uma transação única
 
-<h2>RN<h2/>
+##  RN
 
 - [x] A transação pode ser do tipo crédito que somará ao valor total, ou débito subtrairá
 - [x] Deve ser possível identificarmos o usuário entre as requisições 
