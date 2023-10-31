@@ -1,4 +1,4 @@
-<h1 align="center" style="font-size:36px;">Transactions API<h1/>
+# Transactions API
 
 Desenvolvida nas aulas do Bootcamp Ignite da [Rocketseat](https://rocketseat.com.br),
 esta REST API se trata sobre um sistema de transações financeiras.
